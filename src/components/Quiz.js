@@ -5,21 +5,19 @@ import logo from "../logo.png";
 import Choices from "./Choices";
 const Quiz = ({ state, dispatch }) => {
   const [currQuestion, setCurrQuestion] = useState(0);
-  const [isSelect, setSelect] = useState(false);
-
+  const currQuestionId = state.questions[currQuestion].id;
+  const isAnswerSaved = state.playerAnswers[currQuestionId];
   //next question
   const nextQuestion = () => {
     if (currQuestion === state.questions.length - 1) {
-      //if no questions next
-
-      setCurrQuestion(0);
+      setCurrQuestion(0); //set index 0
       dispatch({ type: "game_state", gameState: "result" });
-      //count correct answer
 
+      //count correct answer
       const score = state.questions.filter(
         (question) => question.answer === state.playerAnswers[question.id]
       );
-      console.log(score.length);
+
       dispatch({
         type: "set_score",
         score: score.length === 0 ? 0 : score.length,
@@ -30,24 +28,26 @@ const Quiz = ({ state, dispatch }) => {
   };
 
   const restart = () => {
-    setSelect(null);
     setCurrQuestion(0);
+    dispatch({
+      //delete recorded answer
+      type: "remove_answer",
+    });
     dispatch({ type: "game_state", gameState: "menu" });
   };
   //select answer
   const handleSelectAnswer = (choices) => {
     dispatch({
       type: "active_question",
-      active_questionId: state.questions[currQuestion].id,
+      active_questionId: currQuestionId,
     });
     //record answer
     dispatch({
       type: "add_answer",
       answer: choices?.id,
     });
-    setSelect(true);
   };
-  const isSavedAnswer = state.playerAnswers[state.questions[currQuestion].id];
+
   return (
     <>
       <div className="flex flex-col gap-3 bg-black p-6 text-white w-[32rem]   ">
@@ -99,7 +99,6 @@ const Quiz = ({ state, dispatch }) => {
               disabled={currQuestion === 0}
               onClick={() => {
                 setCurrQuestion(currQuestion - 1);
-                setSelect(true);
               }}
             />
             <Button
@@ -116,9 +115,9 @@ const Quiz = ({ state, dispatch }) => {
                 : "Next"
             }
             onClick={nextQuestion}
-            disabled={isSavedAnswer ? false : true}
+            disabled={isAnswerSaved ? false : true}
             className={
-              isSavedAnswer
+              isAnswerSaved
                 ? "btn bg-green px-3 py-1  "
                 : "btn bg-gray   py-1   px-3  "
             }
