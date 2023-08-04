@@ -8,8 +8,8 @@ Welcome to the Quiz Web Application repository! This project is an interactive q
 - **useReducer**: A powerful React hook that simplifies state management by dispatching actions and reducing them to a new state.
 - **React Query**: A data-fetching library that provides a delightful caching and background data synchronization experience, making the quiz app more responsive and performant.
 - **Tailwind CSS**: A utility-first CSS framework that facilitates the creation of modern and responsive user interfaces with minimal effort.
-- **JSON-Server: A fake REST API server that allows you to quickly prototype and test your application with mock data.
-- **Concurrently: A handy utility to run multiple commands concurrently, simplifying your development workflow.
+- JSON-Server: A fake REST API server that allows you to quickly prototype and test your application with mock data.
+- Concurrently: A handy utility to run multiple commands concurrently, simplifying your development workflow.
 
 
 **User-Friendly Quiz Experience:**
