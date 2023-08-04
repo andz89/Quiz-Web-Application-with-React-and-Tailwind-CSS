@@ -69,11 +69,7 @@ const Menu = ({ state, dispatch }) => {
               text="Start"
               className="btn bg-green w-80"
               onClick={() => {
-<<<<<<< HEAD
-                  if (state.playerName === "" || state.playerName === null) {
-=======
                 if (state.playerName === "" || state.playerName === null) {
->>>>>>> 6d3394f267ed918f88401e2db92bc87b62254636
                   var id = Math.floor(Math.random() * 100000000);
 
                   dispatch({ type: "add_name", name: `player${id}` });
