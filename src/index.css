@@ -1,13 +1,62 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply text-lg mt-3 h-9 font-medium text-zinc-900 rounded block;
+}
+/* custom.css */
+/* You can adjust the color value to your desired color */
+input[type="radio"] {
+  accent-color:  #1db954;
+  background-color: #1db954;
+  border: 2px solid white;
+  /* You can also add other styles like border or box-shadow to customize the look further */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* bg-color */
+.bg-light-black {
+  background-color: #212121;
+}
+
+.bg-black {
+  background-color: #121212;
+}
+
+.bg-gray {
+  background-color: #535353;
+}
+
+.bg-light-gray {
+  background-color: #b3b3b3;
+}
+
+.bg-green {
+  background-color: #1db954;
+}
+
+/* text-color */
+.text-light-black {
+  color: #212121;
+}
+
+.text-black {
+  color: #121212;
+}
+
+.text-gray {
+  color: #535353;
+}
+
+.text-light-gray {
+  color: #b3b3b3;
+}
+
+.text-green {
+  color: #1db954;
+}
+
+.hover-bg-light-gray:hover {
+  background-color: #212121;
+  transition: all 0.2s ease-in;
 }

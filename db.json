@@ -1,0 +1,37 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "prompt": "In what year was Spotify founded?",
+      "choices": [
+        { "id": "1", "option": "2006" },
+        { "id": "2", "option": "2008" },
+        { "id": "3", "option": "2010" },
+        { "id": "4", "option": "2012" }
+      ],
+      "answer": "2"
+    },
+    {
+      "id": "2",
+      "prompt": "Who are the co-founders of Spotify?",
+      "choices": [
+        { "id": "1", "option": "Daniel Ek and Martin Lorentzon" },
+        { "id": "2", "option": "Mark Zuckerberg and Sean Parker" },
+        { "id": "3", "option": "Larry Page and Sergey Brin" },
+        { "id": "4", "option": "Jeff Bezos and Steve Jobs" }
+      ],
+      "answer": "1"
+    },
+    {
+      "id": "3",
+      "prompt": "Which country was Spotify launched in first?",
+      "choices": [
+        { "id": "1", "option": "Sweden" },
+        { "id": "2", "option": "United States" },
+        { "id": "3", "option": "United Kingdom" },
+        { "id": "4", "option": "Germany" }
+      ],
+      "answer": "1"
+    }
+  ]
+}
