@@ -69,6 +69,11 @@ const Menu = ({ state, dispatch }) => {
               text="Start"
               className="btn bg-green w-80"
               onClick={() => {
+                if (state.playerName === "" || state.playerName === null) {
+                  var id = Math.floor(Math.random() * 100000000);
+
+                  dispatch({ type: "add_name", name: `player${id}` });
+                }
                 dispatch({ type: "game_state", gameState: "playing" });
                 dispatch({ type: "login", isLogin: true });
                 dispatch({ type: "load_questions", loadQuestions: data });
