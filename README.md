@@ -19,7 +19,8 @@ With React's component-based architecture and Tailwind CSS utility classes, the 
 1. Clone this repository to your local machine using `git clone`.
 2. Navigate into the project directory with `cd quiz-web-app`.
 3. Install the required dependencies using `npm install`.
-4. Start the development server with `npm start`.
+4. Start the development server with `npm run start`.
+5. use `npm run dev` to run both react-script and json-server.
 
 **Contributions and Feedback:**
 Contributions, bug reports, and feature requests are encouraged! If you have ideas to enhance the quiz app or encounter any issues, please feel free to submit pull requests or raise an issue. Your feedback and contributions will help make this project even better!
