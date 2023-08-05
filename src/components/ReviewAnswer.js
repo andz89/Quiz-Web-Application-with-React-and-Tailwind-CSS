@@ -14,7 +14,7 @@ const ReviewAnswer = ({ answerKey, choices, playerAnswer }) => {
           className="cursor-pointer  "
         />
 
-        <span> {choices.option}</span>
+        <span> {choices.text}</span>
       </label>
       {answerKey && <BsFillCheckCircleFill size={20} className="text-green" />}
       {!answerKey && playerAnswer && (

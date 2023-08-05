@@ -19,7 +19,7 @@ const Choices = ({ handleSelectAnswer, choices, selectedAnswer }) => {
           className="cursor-pointer  "
         />
 
-        <span> {choices.option}</span>
+        <span> {choices.text}</span>
       </label>
     </div>
   );

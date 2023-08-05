@@ -10,12 +10,58 @@ const Menu = ({ state, dispatch }) => {
       }, 1000);
     });
   }
+
   const fetchData = async () => {
     await newPromise();
-    const response = await fetch("http://localhost:5000/questions");
+    const response = await fetch(
+      "https://opentdb.com/api.php?amount=3&category=12&difficulty=easy&type=multiple"
+    );
     return response.json();
   };
-  const { data, isLoading } = useQuery(["questions"], () => fetchData(), {
+  const transformed = fetchData().then((data) => {
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generateUniqueId() {
+      return Math.random().toString(36).substr(2, 9);
+    }
+
+    // Map over the array and modify each question object
+    const modifiedData = data.results.map((question) => {
+      const correctAnswerId = generateUniqueId();
+      const choices = [
+        ...question.incorrect_answers.map((answer) => ({
+          id: generateUniqueId(),
+          text: answer,
+          isCorrect: false,
+        })),
+        {
+          id: correctAnswerId,
+          text: question.correct_answer,
+          isCorrect: true,
+        },
+      ];
+
+      // Shuffle the choices
+      const shuffledChoices = shuffleArray(choices);
+
+      return {
+        id: generateUniqueId(),
+        prompt: question.question,
+        choices: shuffledChoices,
+        answer: correctAnswerId,
+      };
+    });
+
+    return modifiedData;
+  });
+
+  const { data, isLoading } = useQuery(["questions"], () => transformed, {
     staleTime: 30000,
     refetchOnMount: false,
     refetchOnReconnect: false,
