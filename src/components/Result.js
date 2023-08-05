@@ -51,14 +51,16 @@ const Result = ({ state, dispatch }) => {
                   key={question.id}
                   className="flex flex-col gap-3 mt-2 w-full"
                 >
+                  <hr className="my-2 border-gray-400"></hr>
+                  {state.playerAnswers[question.id] === question.answer && (
+                    <>
+                      <h2 className="text-green">1 point</h2>
+                    </>
+                  )}
                   <div className="flex items-center gap-2">
                     {index + 1}. {question.prompt}
-                    {state.playerAnswers[question.id] === question.answer && (
-                      <>
-                        <h2 className="text-green">1 point</h2>
-                      </>
-                    )}
                   </div>
+
                   <div className="flex flex-col gap-1  ">
                     {question.choices.map((option) => (
                       <ReviewAnswer

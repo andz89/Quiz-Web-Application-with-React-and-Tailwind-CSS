@@ -19,6 +19,7 @@ const Menu = ({ state, dispatch }) => {
     return response.json();
   };
   const transformed = fetchData().then((data) => {
+    //to shuffle the choices
     function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -27,16 +28,16 @@ const Menu = ({ state, dispatch }) => {
       return array;
     }
 
-    function generateUniqueId() {
+    function generateID() {
       return Math.random().toString(36).substr(2, 9);
     }
 
     // Map over the array and modify each question object
     const modifiedData = data.results.map((question) => {
-      const correctAnswerId = generateUniqueId();
+      const correctAnswerId = generateID();
       const choices = [
         ...question.incorrect_answers.map((answer) => ({
-          id: generateUniqueId(),
+          id: generateID(),
           text: answer,
           isCorrect: false,
         })),
@@ -48,12 +49,12 @@ const Menu = ({ state, dispatch }) => {
       ];
 
       // Shuffle the choices
-      const shuffledChoices = shuffleArray(choices);
+      const shuffledAnswersOption = shuffleArray(choices);
 
       return {
-        id: generateUniqueId(),
+        id: generateID(),
         prompt: question.question,
-        choices: shuffledChoices,
+        choices: shuffledAnswersOption,
         answer: correctAnswerId,
       };
     });
